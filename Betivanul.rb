@@ -68,6 +68,9 @@ nivel4 = [
 ]
 #sectiunea2 - primirea si prelucrarea datelor primite de la utilizator
 # foarte util acum ar fi niste liste prestabilite din care sa aleaga utilizatorul - gen droplist cu bifari
+i = 0
+while i <= 10 do # programul de mai jos va rula de maxim 10 ori pana cand utilizatorul tasteaza corect inputul
+
 print "Ce tip de bautura ai baut in ultima ora? Bere, tarie sau vin: "
 tip_bautura = gets.chomp.downcase
   
@@ -79,45 +82,62 @@ rand_nivel3 = rand(0..11)
 rand_nivel4 = rand(0..20)
 
 #in functie de tipul de bautura scriptul de mai jos ofera un anumit raspuns
-case tip_bautura
-   when "bere"
-     print "Cate beri in ultima ora: "
-     nr_beri = gets.chomp.to_i  #am observat ca metoda .to_i(to integer) ignora orice alt caracter care nu este cifra. Deci daca va scrie "2 beri" se returneaza doar rezultatul "2"
-     if nr_beri <= 1
-       puts nivel1[rand_nivel1]
-     elsif nr_beri <= 2
-        puts nivel2[rand_nivel2]
-      elsif nr_beri <= 3
-        puts nivel3[rand_nivel3]
-      else 
-        puts nivel4[rand_nivel4]
-     end
-    when "tarie"
-     print "Cati ml de tarie ai baut in ultima ora: "
-     ml_tarie = gets.chomp.to_i
-     if ml_tarie <= 50
-       puts nivel1[rand_nivel1]
-     elsif ml_tarie <= 100
-        puts nivel2[rand_nivel2]
-      elsif ml_tarie <= 200
-        puts nivel3[rand_nivel3]
-      else 
-        puts nivel4[rand_nivel4]
-     end
-    when "vin"
-     print "Cati ml de vin ai baut in ultima ora: "
-     ml_vin = gets.chomp.to_i
-     if ml_vin <= 100
-       puts nivel1[rand_nivel1]
-     elsif ml_vin <= 200
-        puts nivel2[rand_nivel2]
-      elsif ml_vin <= 400
-        puts nivel3[rand_nivel3]
-      else 
-        puts nivel4[rand_nivel4]
-     end
-     
- else
-         print "Mai reincarca programul odata si tasteaza corect: bere, tarie sau vin. " 
-        #am incercat sa reinitializez scriptul punandu-l intr-o metoda  pe care sa o reapelez aici dar nu am reusit. Trebuie sa mai sap putin. 
-     end
+
+
+  case tip_bautura
+     when "bere"
+       print "Cate beri in ultima ora: "
+       nr_beri = gets.chomp.to_i  #am observat ca metoda .to_i(to integer) ignora orice alt caracter care nu este cifra. Deci daca va scrie "2 beri" se returneaza doar rezultatul "2"
+       if nr_beri <= 1
+         puts nivel1[rand_nivel1]
+         break
+       elsif nr_beri <= 2
+          puts nivel2[rand_nivel2]
+          break
+        elsif nr_beri <= 3
+          puts nivel3[rand_nivel3]
+          break
+        else 
+          puts nivel4[rand_nivel4]
+          break
+       end
+      when "tarie"
+       print "Cati ml de tarie ai baut in ultima ora: "
+       ml_tarie = gets.chomp.to_i
+       if ml_tarie <= 50
+         puts nivel1[rand_nivel1]
+         break
+       elsif ml_tarie <= 100
+          puts nivel2[rand_nivel2]
+          break
+        elsif ml_tarie <= 200
+          puts nivel3[rand_nivel3]
+          break
+        else 
+          puts nivel4[rand_nivel4]
+          break
+       end
+      when "vin"
+       print "Cati ml de vin ai baut in ultima ora: "
+       ml_vin = gets.chomp.to_i
+       if ml_vin <= 100
+         puts nivel1[rand_nivel1]
+         break
+       elsif ml_vin <= 200
+          puts nivel2[rand_nivel2]
+          break
+        elsif ml_vin <= 400
+          puts nivel3[rand_nivel3]
+          break
+        else 
+          puts nivel4[rand_nivel4]
+          break
+       end
+       
+   else
+           puts "Tasteaza corect: bere, tarie sau vin. " 
+          # in cazul in care utilizatorul nu tasteaza corect programul se va reinitializa  
+       end
+  i += 1 # il incrementam pe i astfel incat programul sa ruleze de maxim 10 ori
+end # acest end corespunde cu while
+
